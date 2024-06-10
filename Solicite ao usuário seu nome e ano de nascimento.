@@ -1,0 +1,40 @@
+function verificarIdade() {
+  const nome = prompt("Digite seu nome:");
+  const anoNascimento = parseInt(prompt("Digite seu ano de nascimento:"));
+
+  const idade = calcularIdade(anoNascimento);
+  const isAdulto = idade >= 18;
+
+  if (isAdulto) {
+    const usuario = cadastrarUsuario(nome);
+    console.log("Bem vindo,", usuario.nome, "!");
+  } else {
+    console.log("Você precisa ter 18 anos ou mais para se cadastrar.");
+  }
+}
+
+function calcularIdade(anoNascimento) {
+  const dataAtual = new Date();
+  const anoAtual = dataAtual.getFullYear();
+  return anoAtual - anoNascimento;
+}
+
+function cadastrarUsuario(nome) {
+  const nomeUsuario = prompt("Digite seu nome de usuário:");
+  const senha = prompt("Digite sua senha:");
+
+  const usuario = {
+    nome: nome,
+    nomeUsuario: nomeUsuario,
+    senha: senha
+  };
+
+  // Simulando o salvamento em uma lista (banco de dados em um projeto real)
+  listaUsuarios.push(usuario);
+  return usuario;
+}
+
+// Lista para armazenar os usuários cadastrados (simulação)
+const listaUsuarios = [];
+
+verificarIdade();
